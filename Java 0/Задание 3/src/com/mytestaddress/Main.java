@@ -6,11 +6,12 @@ public class Main {
     public static void main(String[] args) {
 	    // write your code here
         Student student = new Student();
-        //Teacher teacher = new Teacher();
-    }
+        System.out.println(student.name + " " + student.age + " " + student.averageMark);
 
-    // Абстрактный метод для сортировки по возрасту
-    private void Comparable() {
+        Teacher teacher = new Teacher();
+        System.out.println(teacher.name + " " + teacher.age + " " + teacher.experience);
 
+        Teacher teacher1 = new Teacher();
+        System.out.println(teacher1.name + " " + teacher1.age + " " + teacher1.experience);
     }
 }

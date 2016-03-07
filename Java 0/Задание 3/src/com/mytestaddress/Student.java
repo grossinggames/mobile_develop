@@ -28,33 +28,31 @@ public class Student extends Partaker {
 
         // Ввод возраста студента
         boolean enterAge = false;
-        int ageStudent = 0;
         do {
             try {
                 out.println("Введите возраст студента: ");
                 String txt = sc.next();
-                ageStudent = Integer.parseInt(txt);
+                int ageStudent = Integer.parseInt(txt);
                 enterAge = editAge(ageStudent); // Возвращает истину если корректно ввели имя
             } catch (NumberFormatException e) {
                 System.out.println("Повторите ввод");
                 continue;
             }
-        } while (!enterAge || ageStudent < 0 || ageStudent > 35);
+        } while (!enterAge);
 
         // Ввод среднего балла студента
         boolean enterAverageMark = false;
-        float averageMarkStudent = 0;
         do {
             try {
                 out.println("Введите средний балл студента: ");
                 String txt = sc.next();
-                averageMarkStudent = Float.parseFloat(txt);
+                float averageMarkStudent = Float.parseFloat(txt);
                 enterAverageMark = editAverageMark(averageMarkStudent); // Возвращает истину если корректно ввели средний балл
             } catch (NumberFormatException e) {
-                System.out.println("Повторите ввод");
+                System.out.println( "Повторите ввод" + e.toString() );
                 continue;
             }
-        } while (!enterAverageMark || averageMarkStudent < 0.0 || averageMarkStudent > 5.0);
+        } while (!enterAverageMark);
     }
 
     @Override
@@ -63,17 +61,28 @@ public class Student extends Partaker {
 
     @Override
     boolean editName(String s) {
+        name = s;
         System.out.println("Введенное имя студента: " + s);
         return true;
     }
 
     @Override
     boolean editAge(int a) {
-        System.out.println("Введенный возраст студента: " + a);
+        if (a < 0 || a > 35) {
+            System.out.println("Повторите ввод");
+            return false;
+        }
+        age = a;
+        System.out.println("Введенный возраст студента: " + age);
         return true;
     }
 
     boolean editAverageMark(float aM) {
+        if (aM < 0.0 || aM > 5.0) {
+            System.out.println("Повторите ввод");
+            return false;
+        }
+        averageMark = aM;
         System.out.println("Введенный средний балл: " + aM);
         return true;
     }
