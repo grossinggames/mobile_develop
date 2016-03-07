@@ -5,7 +5,9 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-	    Scanner sc = new Scanner(System.in); // Создаем объект класса Scanner
+
+        Scanner sc = new Scanner(System.in); // Создаем объект класса Scanner
+
         System.out.print("Введите количество вводимых цифр: ");
 
         if ( sc.hasNextInt() ) { // Возвращает истину если с потока ввода можно получить целове число
