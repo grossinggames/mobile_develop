@@ -19,7 +19,7 @@ public class Student extends Partaker {
             try {
                 out.println("Введите имя студента: ");
                 String nameStudent = sc.next();
-                enterName = editName(nameStudent); // Возвращает истину если корректно ввели имя
+                enterName = setName(nameStudent); // Возвращает истину если корректно ввели имя
             } catch (NumberFormatException e) {
                 out.println("Повторите ввод");
                 continue;
@@ -33,7 +33,7 @@ public class Student extends Partaker {
                 out.println("Введите возраст студента: ");
                 String txt = sc.next();
                 int ageStudent = Integer.parseInt(txt);
-                enterAge = editAge(ageStudent); // Возвращает истину если корректно ввели имя
+                enterAge = setAge(ageStudent); // Возвращает истину если корректно ввели имя
             } catch (NumberFormatException e) {
                 System.out.println("Повторите ввод");
                 continue;
@@ -56,24 +56,18 @@ public class Student extends Partaker {
     }
 
     @Override
-    void editing() {
-    }
-
-    @Override
-    boolean editName(String s) {
+    boolean setName(String s) {
         name = s;
-        System.out.println("Введенное имя студента: " + s);
         return true;
     }
 
     @Override
-    boolean editAge(int a) {
+    boolean setAge(int a) {
         if (a < 0 || a > 35) {
             System.out.println("Повторите ввод");
             return false;
         }
         age = a;
-        System.out.println("Введенный возраст студента: " + age);
         return true;
     }
 
@@ -83,7 +77,6 @@ public class Student extends Partaker {
             return false;
         }
         averageMark = aM;
-        System.out.println("Введенный средний балл: " + aM);
         return true;
     }
 }

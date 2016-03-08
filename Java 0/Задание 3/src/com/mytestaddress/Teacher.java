@@ -2,7 +2,6 @@ package com.mytestaddress;
 
 import java.util.Scanner;
 
-import java.util.Scanner;
 import static java.lang.System.*;
 
 /**
@@ -18,34 +17,34 @@ public class Teacher extends Partaker {
 
         Scanner sc = new Scanner(in); // Создаем объект класса Scanner
 
-        // Ввод имени студента
+        // Ввод имени преподавателя
         boolean enterName = false;
         do {
             try {
                 out.println("Введите имя преподавателя: ");
                 String nameStudent = sc.next();
-                enterName = editName(nameStudent); // Возвращает истину если корректно ввели имя
+                enterName = setName(nameStudent); // Возвращает истину если корректно ввели имя
             } catch (NumberFormatException e) {
                 out.println( "Повторите ввод" + e.toString() );
                 continue;
             }
         } while (!enterName);
 
-        // Ввод возраста студента
+        // Ввод возраста преподавателя
         boolean enterAge = false;
         do {
             try {
                 out.println("Введите возраст преподавателя: ");
                 String txt = sc.next();
                 int ageStudent = Integer.parseInt(txt);
-                enterAge = editAge(ageStudent); // Возвращает истину если корректно ввели имя
+                enterAge = setAge(ageStudent); // Возвращает истину если корректно ввели имя
             } catch (NumberFormatException e) {
                 System.out.println( "Повторите ввод " + e.toString() );
                 continue;
             }
         } while (!enterAge);
 
-        // Ввод среднего балла студента
+        // Ввод среднего балла преподавателя
         boolean enterExperience = false;
         do {
             try {
@@ -61,24 +60,18 @@ public class Teacher extends Partaker {
     }
 
     @Override
-    void editing() {
-    }
-
-    @Override
-    boolean editName(String s) {
+    boolean setName(String s) {
         name = s;
-        System.out.println("Введенное имя студента: " + s);
         return true;
     }
 
     @Override
-    boolean editAge(int a) {
+    boolean setAge(int a) {
         if (a < 0 || a > 35) {
             System.out.println("Повторите ввод");
             return false;
         }
         age = a;
-        System.out.println("Введенный возраст студента: " + a);
         return true;
     }
 
@@ -88,7 +81,6 @@ public class Teacher extends Partaker {
             return false;
         }
         experience = e;
-        System.out.println("Введенный стаж работы: " + e);
         return true;
     }
 }

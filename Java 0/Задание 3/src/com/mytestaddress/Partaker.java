@@ -10,9 +10,8 @@ abstract class Partaker {
     Partaker() {
     }
 
-    abstract void editing();
-    abstract boolean editName(String s);
-    abstract boolean editAge(int a);
+    abstract boolean setName(String s);
+    abstract boolean setAge(int a);
 
     // Абстрактный метод для сортировки по возрасту
     private void Comparable() {
