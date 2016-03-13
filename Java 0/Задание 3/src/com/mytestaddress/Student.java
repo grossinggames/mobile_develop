@@ -1,5 +1,6 @@
 package com.mytestaddress;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import static java.lang.System.*;
 
@@ -8,7 +9,6 @@ import static java.lang.System.*;
  */
 public class Student extends Partaker {
     float averageMark;
-
 
     Student() {
         Scanner sc = new Scanner(in); // Создаем объект класса Scanner
@@ -20,6 +20,9 @@ public class Student extends Partaker {
                 out.println("Введите имя студента: ");
                 String nameStudent = sc.next();
                 enterName = setName(nameStudent); // Возвращает истину если корректно ввели имя
+            } catch (InputMismatchException e) {
+                out.println("Повторите ввод");
+                continue;
             } catch (NumberFormatException e) {
                 out.println("Повторите ввод");
                 continue;
@@ -48,8 +51,11 @@ public class Student extends Partaker {
                 String txt = sc.next();
                 float averageMarkStudent = Float.parseFloat(txt);
                 enterAverageMark = editAverageMark(averageMarkStudent); // Возвращает истину если корректно ввели средний балл
+            } catch (InputMismatchException e) {
+                out.println("Повторите ввод");
+                continue;
             } catch (NumberFormatException e) {
-                System.out.println( "Повторите ввод" + e.toString() );
+                out.println("Повторите ввод");
                 continue;
             }
         } while (!enterAverageMark);
@@ -78,5 +84,11 @@ public class Student extends Partaker {
         }
         averageMark = aM;
         return true;
+    }
+
+    @Override
+    public String toString() {
+        String student = "Имя: " + this.name + " Возраст: " + this.age + " Средний балл: " + this.averageMark;
+        return student;
     }
 }

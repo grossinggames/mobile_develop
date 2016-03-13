@@ -1,17 +1,14 @@
 package com.mytestaddress;
 
-import java.lang.reflect.Array;
 import java.util.*;
 import static java.lang.System.out;
-
-import java.util.List;
 
 /**
  * Created by priora on 08.03.2016.
  */
 public class Repository {
-    HashMap<String, Partaker> hm = new HashMap<String, Partaker>();
-    ArrayList<String> list = new ArrayList<String>();
+    HashSet<Partaker> hm = new HashSet<Partaker>();
+    ArrayList<Partaker> list = new ArrayList<Partaker>();
 
     Repository() {
 
@@ -31,66 +28,36 @@ public class Repository {
                 return false;
         }
 
-        if ( hm.get(partaker.name) == null ) {
-            System.out.println( "Добавляем новую запись. Имя: " + partaker.name + " Объект: " + partaker.toString() );
-            System.out.println("");
-            hm.put(partaker.name, partaker);
-        } else {
-            System.out.println( "Запись уже существует. Имя: " + partaker.name + " Объект: " + partaker.toString() );
-            System.out.println("");
-        }
-        list.add(partaker.name);
+        System.out.println( "Добавляем новую запись. Имя: " + partaker.name + " Объект: " + partaker.toString() );
+        hm.add(partaker);
+        list.add(partaker);
         return true;
     }
 
     private void printPartakers() {
         System.out.println("Вывод всех из HashMap");
-        for( Map.Entry<String, Partaker> entry : hm.entrySet() ) {
-            String key = entry.getKey();
-            Partaker value = entry.getValue();
-            System.out.println("Имя: " + key + " Объект: " + value.toString());
+
+        for (Partaker prkr : hm) {
+            System.out.println(prkr);
         }
 
         System.out.println("Вывод всех из ArrayList");
-        for (String l: list) {
-            System.out.println("Имя: " + l);
+        for (Partaker l: list) {
+            System.out.println(l);
         }
     }
 
     private void printSortPartakers() {
-        HashMap<String, Partaker> hmSort = new HashMap<String, Partaker>();
-        ArrayList<String> listSort = new ArrayList<String>();
+        Collections.sort(list);
 
-        // Копируем массив hm
-        for( Map.Entry<String, Partaker> entry : hm.entrySet() ) {
-            String key = entry.getKey();
-            Partaker value = entry.getValue();
-            hmSort.put(key, value);
+        System.out.println("Отсортированный вывод всех из HashSet");
+        for (Partaker prkr : hm) {
+            System.out.println(prkr);
         }
 
-        // Сортируем массив
-        for( Map.Entry<String, Partaker> entry : hmSort.entrySet() ) {
-            String key = entry.getKey();
-            Partaker value = entry.getValue();
-            int age = value.age;
-        }
-
-        // Копируем массив list
-        for (String l: list) {
-            listSort.add(l);
-        }
-        Collections.sort(listSort);
-
-        System.out.println("Отсортированный вывод всех из HashMap");
-        for( Map.Entry<String, Partaker> entry : hmSort.entrySet() ) {
-            String key = entry.getKey();
-            Partaker value = entry.getValue();
-            System.out.println("Имя: " + key + " Объект: " + value);
-        }
-
-        System.out.println("Вывод всех из ArrayList");
-        for (String l: listSort) {
-            System.out.println("Объект: " + l);
+        System.out.println("Отсортированный вывод всех из ArrayList");
+        for (Partaker l: list) {
+            System.out.println(l);
         }
     }
 

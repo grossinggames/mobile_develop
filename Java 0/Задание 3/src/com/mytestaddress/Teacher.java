@@ -1,5 +1,6 @@
 package com.mytestaddress;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import static java.lang.System.*;
@@ -24,8 +25,11 @@ public class Teacher extends Partaker {
                 out.println("Введите имя преподавателя: ");
                 String nameStudent = sc.next();
                 enterName = setName(nameStudent); // Возвращает истину если корректно ввели имя
+            } catch (InputMismatchException e) {
+                out.println("Повторите ввод");
+                continue;
             } catch (NumberFormatException e) {
-                out.println( "Повторите ввод" + e.toString() );
+                out.println("Повторите ввод");
                 continue;
             }
         } while (!enterName);
@@ -38,8 +42,11 @@ public class Teacher extends Partaker {
                 String txt = sc.next();
                 int ageStudent = Integer.parseInt(txt);
                 enterAge = setAge(ageStudent); // Возвращает истину если корректно ввели имя
+            } catch (InputMismatchException e) {
+                out.println("Повторите ввод");
+                continue;
             } catch (NumberFormatException e) {
-                System.out.println( "Повторите ввод " + e.toString() );
+                out.println("Повторите ввод");
                 continue;
             }
         } while (!enterAge);
@@ -52,8 +59,11 @@ public class Teacher extends Partaker {
                 String txt = sc.next();
                 int experience = Integer.parseInt(txt);
                 enterExperience = editExperience(experience); // Возвращает истину если корректно ввели средний балл
+            } catch (InputMismatchException e) {
+                out.println("Повторите ввод");
+                continue;
             } catch (NumberFormatException e) {
-                System.out.println( "Повторите ввод " + e.toString() );
+                out.println("Повторите ввод");
                 continue;
             }
         } while (!enterExperience);
